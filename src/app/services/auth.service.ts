@@ -45,16 +45,7 @@ export class AuthService {
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-        });
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+      .signInWithEmailAndPassword(email, password);
   }
 
   // Sign up with email/password
@@ -146,7 +137,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     });
   }
 

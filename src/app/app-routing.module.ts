@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
+  {
+    path: 'panel',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./pages/polopanels/polopanels.module').then((m) => m.PolopanelsModule),
+  },
   {
     path: 'home',
     loadChildren: () =>
