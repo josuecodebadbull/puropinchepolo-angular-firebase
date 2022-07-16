@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bikepolo-tournament-23118": {
+      "hosting": {
+        "puro": [
+          "bikepolo-tournament-23118"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bikepolo-tournament-23118"
+  }
+}
