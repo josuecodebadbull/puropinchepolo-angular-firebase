@@ -20,6 +20,16 @@ const routes: Routes = [
       import('./pages/sign-in/sign-in.module').then((m) => m.SignInModule),
   },
   {
+    path: 'sign-up',
+    loadChildren: () =>
+      import('./pages/sign-up/sign-up.module').then((m) => m.SignUpModule),
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () =>
+      import('./pages/forgot-password/forgot-password.module').then((m) => m.ForgotPasswordModule),
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

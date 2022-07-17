@@ -1,4 +1,4 @@
-import { Component, createPlatform, NgZone, OnInit } from '@angular/core';
+import { Component, createPlatform, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   loading: boolean = false;
@@ -27,19 +27,24 @@ export class SignInComponent implements OnInit {
     this.createForm();
   }
 
+  ngOnDestroy() {
+    this.UnSuscribe.next();
+    this.UnSuscribe.complete();
+  }
+
   private navegateToDasboard() {
-    this.router.navigate(['']);
+    this.router.navigate(['panel']);
   }
 
   createForm() {
     this.loginForm = this.fb.group({
-      email: ['j.casasola.lopez@gmail.com', [Validators.required, Validators.email]],
-      password: ['Josue2804.', [Validators.required]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     })
   }
 
   login() {
-    const { loginForm, UnSuscribe, authService } = this;
+    const { loginForm, authService } = this;
     const { email, password } = loginForm.value;
     const that = this;
     that.msgLogin = '';
@@ -51,7 +56,6 @@ export class SignInComponent implements OnInit {
           that.msgLogin = 'login';
         });
         that.loading = false;
-        console.log(result.user);
       })
         .catch((error) => {
           that.loading = false;

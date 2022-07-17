@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignUpComponent } from './sign-up.component';
-import { AuthService } from 'src/app/services/auth.service';
+import { ForgotPasswordComponent } from './forgot-password.component';
+import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/common/material.module';
-import { Router, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
-const routes: Routes = [{ path: '', component: SignUpComponent }];
+const routes: Routes = [{ path: '', component: ForgotPasswordComponent}];
 
 @NgModule({
   declarations: [
-    SignUpComponent
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -21,4 +21,4 @@ const routes: Routes = [{ path: '', component: SignUpComponent }];
   ],
   providers: [AuthService]
 })
-export class SignUpModule { }
+export class ForgotPasswordModule { }

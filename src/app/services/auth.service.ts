@@ -51,16 +51,7 @@ export class AuthService {
   // Sign up with email/password
   SignUp(email: string, password: string) {
     return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
+      .createUserWithEmailAndPassword(email, password);
   }
 
   // Send email verfificaiton when new user sign up
@@ -75,13 +66,7 @@ export class AuthService {
   // Reset Forggot password
   ForgotPassword(passwordResetEmail: string) {
     return this.afAuth
-      .sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
+      .sendPasswordResetEmail(passwordResetEmail);
   }
 
   // Returns true when user is looged in and email is verified
@@ -90,7 +75,7 @@ export class AuthService {
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
-  // Sign in with Google
+  // Sign in with Google d
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
