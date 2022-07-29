@@ -30,6 +30,11 @@ const routes: Routes = [
       import('./pages/forgot-password/forgot-password.module').then((m) => m.ForgotPasswordModule),
   },
   {
+    path: 'verify-email',
+    loadChildren: () =>
+      import('./pages/verify-mail/verify-mail.module').then((m) => m.VerifyMailModule),
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

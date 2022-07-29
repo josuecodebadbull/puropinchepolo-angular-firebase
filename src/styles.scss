@@ -1,11 +1,16 @@
-body{
+@import "./assets/scss/index.scss";
+body {
     background-color: rgba($color: #000000, $alpha: 0.2);
 }
 
-.max-form{
+.max-form {
     max-width: 400px;
 }
 
-.pointer{
+.pointer {
     cursor: pointer;
+}
+
+.road-text {
+    font-family: "RoadRage";
 }

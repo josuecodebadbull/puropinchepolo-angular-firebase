@@ -48,9 +48,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
         up and returns promise */
         that.authService.SendVerificationMail();
         // this.SetUserData(result.user);
+        that.loading = false;
       })
       .catch((error) => {
-        window.alert(error.message);
+        that.loading = false;
+        // window.alert(error.message);
+        this.msgLogin = error.message;
       });
     }
   }
