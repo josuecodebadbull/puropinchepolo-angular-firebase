@@ -7,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {     
+  constructor() {
   }
 
   ngOnInit(): void {
-        let video = (<HTMLInputElement>document.getElementById('video'));
-        console.log(video);
-        video.play();
+
+    const video = document.getElementById('myVideo') as HTMLVideoElement | null;
+    if (video != null) {
+      video.muted = true;
+      video?.play();
+    }
   }
 
 }
